@@ -1,0 +1,270 @@
+<!doctype html> 
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <title>Збройні Сили України — інформаційний портал</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    :root{
+      --blue:#2563eb;
+      --yellow:#facc15;
+      --text:#0a0a0a;
+      --muted:#6b7280;
+      --bg:#ffffff;
+      --card:#ffffffCC;
+      --ring:rgba(0,0,0,.06);
+      --shadow:0 6px 24px rgba(0,0,0,.08);
+      --radius:18px;
+      --radius-lg:24px;
+      --container:1200px;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --text:#e5e7eb; --muted:#a3a3a3; --bg:#0b0b0b;
+        --card:#0f1115CC; --ring:rgba(255,255,255,.08);
+        --shadow:0 8px 28px rgba(0,0,0,.5);
+      }
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,'Noto Sans',Arial,sans-serif;
+      color:var(--text); background:var(--bg);
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--container); margin:0 auto; padding:0 16px}
+    .bar{background:linear-gradient(90deg,var(--blue),var(--yellow)); color:#fff; font-size:14px}
+    .bar .container{display:flex; gap:12px; align-items:center; padding:10px 16px; flex-wrap:wrap}
+    .btn{display:inline-block; padding:10px 14px; border-radius:12px; font-weight:600; box-shadow:var(--shadow)}
+    .btn.primary{background:var(--blue); color:#fff}
+    .btn.ghost{background:#fff; border:1px solid var(--ring)}
+    header{
+      position:sticky; top:0; z-index:40; backdrop-filter:saturate(180%) blur(10px);
+      background:color-mix(in oklab, var(--bg) 85%, transparent); border-bottom:1px solid var(--ring)
+    }
+    .nav{display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+    .nav a{padding:6px 10px; border-radius:10px}
+    .nav a:hover{background:color-mix(in oklab, var(--ring) 60%, transparent)}
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand img{width:44px; height:44px; object-fit:contain}
+    .hero{padding:56px 0}
+    .grid2{display:grid; grid-template-columns:1.05fr .95fr; gap:28px}
+    @media(max-width:900px){.grid2{grid-template-columns:1fr}}
+    .cover{
+      aspect-ratio:4/3; border-radius:var(--radius-lg);
+      background:linear-gradient(135deg,var(--blue),var(--yellow));
+      box-shadow:inset 0 0 120px rgba(0,0,0,.15), var(--shadow);
+    }
+    .floating{
+      position:absolute; left:-18px; bottom:-18px; display:flex; gap:14px; align-items:center;
+      background:var(--card); padding:14px 16px; border-radius:16px; border:1px solid var(--ring); box-shadow:var(--shadow)
+    }
+    h1{font-size:clamp(28px,3.2vw,46px); line-height:1.12; margin:0}
+    h2{font-size:clamp(22px,2.4vw,32px); margin:0 0 6px}
+    p{color:var(--muted); line-height:1.6}
+    .tiles{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    @media(max-width:900px){.tiles{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){.tiles{grid-template-columns:1fr}}
+    .tile{
+      display:block; background:var(--card); border:1px solid var(--ring);
+      padding:18px; border-radius:var(--radius); box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .2s ease
+    }
+    .tile:hover{transform:translateY(-2px)}
+    .stats{background:color-mix(in oklab, var(--bg) 70%, #f5f5f5); border-block:1px solid var(--ring); padding:28px 0}
+    .stats-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+    @media(max-width:900px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+    .stat{background:var(--card); border:1px solid var(--ring); border-radius:16px; padding:16px; text-align:center; box-shadow:var(--shadow)}
+    .stat .v{font-weight:800; font-size:28px}
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    @media(max-width:900px){.cards{grid-template-columns:1fr}}
+    .card{background:var(--card); border:1px solid var(--ring); border-radius:18px; padding:16px; box-shadow:var(--shadow)}
+    .contact{display:grid; grid-template-columns:2fr 1fr; gap:18px}
+    @media(max-width:900px){.contact{grid-template-columns:1fr}}
+    input,textarea{
+      width:100%; padding:12px 12px; border-radius:12px; border:1px solid var(--ring);
+      background:color-mix(in oklab, var(--bg) 92%, transparent); color:var(--text)
+    }
+    footer{border-top:1px solid var(--ring); padding:26px 0; background:color-mix(in oklab, var(--bg) 85%, transparent)}
+    .muted{color:var(--muted); font-size:14px}
+  </style>
+</head>
+<body>
+
+  <!-- Верхня стрічка -->
+  <div class="bar">
+    <div class="container">
+      <strong>Ставай до лав Збройних Сил України</strong>
+      <a class="btn ghost" href="#">Долучитись</a>
+      <span>| Call-центр: 0 800 500 410</span>
+    </div>
+  </div>
+
+  <!-- Хедер -->
+  <header>
+    <div class="container" style="display:flex; align-items:center; gap:16px; padding:12px 0;">
+      <div class="brand">
+        <!-- Герб України (локальний PNG) -->
+        <img src="Lesser_Coat_of_Arms_of_Ukraine.svg.png" alt="Герб України" width="44" height="44" />
+        <div>
+          <div style="font-weight:800; letter-spacing:.2px">Збройні Сили України</div>
+          <div class="muted" style="margin-top:2px">Інформаційний портал</div>
+        </div>
+      </div>
+      <nav class="nav" style="margin-left:auto">
+        <a href="#structure">Структура</a>
+        <a href="#mission">Місія та завдання</a>
+        <a href="#vision">Візія</a>
+        <a href="#losses">Втрати</a>
+        <a href="#useful">Корисне</a>
+        <a href="#press">Пресцентр</a>
+        <a href="#activity">Діяльність</a>
+        <a href="#contacts">Контакти</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Герой -->
+  <section class="hero">
+    <div class="container grid2">
+      <div>
+        <h1>Збройні Сили України — інформаційний портал</h1>
+        <p style="margin-top:14px">
+          Сервіси для військових та їхніх сімей, нормативні документи, новини і корисні матеріали.
+        </p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:18px">
+          <a class="btn primary" href="#press">До пресцентру</a>
+          <a class="btn ghost" href="#useful">Корисні матеріали</a>
+        </div>
+      </div>
+      <div style="position:relative">
+        <div class="cover"></div>
+        <div class="floating">
+          <!-- Малий герб (використовуємо той самий локальний файл, просто менший розмір) -->
+          <img src="Lesser_Coat_of_Arms_of_Ukraine.svg.png" width="40" height="40" alt="Малий герб України" />
+          <div>
+            <div class="muted" style="font-size:12px">Єдина платформа</div>
+            <div style="font-weight:600">Служба, освіта, підтримка</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Структура -->
+  <section id="structure" class="container" style="padding:40px 0">
+    <h2>Структура</h2>
+    <div class="tiles">
+      <a class="tile" href="#">Генеральний штаб</a>
+      <a class="tile" href="#">Сухопутні війська</a>
+      <a class="tile" href="#">Повітряні сили</a>
+      <a class="tile" href="#">Військово-морські сили</a>
+      <a class="tile" href="#">Сили територіальної оборони</a>
+      <a class="tile" href="#">Інші підрозділи</a>
+    </div>
+  </section>
+
+  <!-- Місія -->
+  <section id="mission" class="container" style="padding:40px 0">
+    <h2>Місія та завдання</h2>
+    <p>
+      Головне завдання Збройних Сил України — захист державного суверенітету та територіальної цілісності, 
+      забезпечення безпеки громадян та підтримка миру.
+    </p>
+  </section>
+
+  <!-- Візія -->
+  <section id="vision" class="container" style="padding:40px 0">
+    <h2>Візія</h2>
+    <p>
+      Українська армія прагне стати сучасною, технологічною та інтегрованою до системи колективної безпеки світу.
+    </p>
+  </section>
+
+  <!-- Втрати -->
+  <section id="losses" class="stats">
+    <div class="container">
+      <h2>Втрати ворога (орієнтовно)</h2>
+      <div class="stats-grid">
+        <div class="stat"><div class="v" id="v1">0</div><div class="muted">особового складу</div></div>
+        <div class="stat"><div class="v" id="v2">0</div><div class="muted">танків</div></div>
+        <div class="stat"><div class="v" id="v3">0</div><div class="muted">ББМ</div></div>
+        <div class="stat"><div class="v" id="v4">0</div><div class="muted">літаків</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Корисне -->
+  <section id="useful" class="container" style="padding:40px 0">
+    <h2>Корисні матеріали</h2>
+    <div class="cards">
+      <div class="card">Законодавство</div>
+      <div class="card">Пільги для військових</div>
+      <div class="card">Довідники</div>
+    </div>
+  </section>
+
+  <!-- Пресцентр -->
+  <section id="press" class="container" style="padding:40px 0">
+    <h2>Пресцентр</h2>
+    <div class="cards">
+      <div class="card">Останні новини</div>
+      <div class="card">Фото та відео</div>
+      <div class="card">Офіційні повідомлення</div>
+    </div>
+  </section>
+
+  <!-- Діяльність -->
+  <section id="activity" class="container" style="padding:40px 0">
+    <h2>Діяльність</h2>
+    <p>Участь у міжнародних навчаннях, миротворчих місіях, розвиток військової освіти та науки.</p>
+  </section>
+
+  <!-- Контакти -->
+  <section id="contacts" class="container" style="padding:40px 0">
+    <h2>Контакти</h2>
+    <div class="contact">
+      <form>
+        <input type="text" placeholder="Ваше ім’я" required />
+        <input type="email" placeholder="Email" required />
+        <textarea placeholder="Ваше повідомлення" rows="4"></textarea>
+        <button class="btn primary" type="submit">Надіслати</button>
+      </form>
+      <div>
+        <p><strong>Адреса:</strong> Київ, Україна</p>
+        <p><strong>Телефон:</strong> 0 800 500 410</p>
+        <p><strong>Email:</strong> info@zsu.gov.ua</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Футер -->
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+      <span class="muted">© <span id="y"></span> Збройні Сили України</span>
+      <span class="muted">Слава Україні!</span>
+    </div>
+  </footer>
+
+  <script>
+    // Дата у футері
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Анімація чисел
+    function animateValue(el, target, duration){
+      const start = 0;
+      const startTime = performance.now();
+      function step(now){
+        const p = Math.min((now - startTime) / duration, 1);
+        const val = Math.floor(start + (target - start) * p);
+        el.textContent = val.toLocaleString('uk-UA');
+        if(p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    animateValue(document.getElementById('v1'), 1090000, 1200);
+    animateValue(document.getElementById('v2'), 11169, 1200);
+    animateValue(document.getElementById('v3'), 32577, 1200);
+    animateValue(document.getElementById('v4'), 1482, 1200);
+  </script>
+</body>
+</html>
